@@ -1,0 +1,59 @@
+{
+  "app": {
+    "title": "Reality Farm",
+    "loading": "Loading..."
+  },
+  "nav": {
+    "home": "Home",
+    "market": "Market",
+    "profile": "Profile"
+  },
+  "home": {
+    "title": "My Animals",
+    "empty": "You don't have any animals yet",
+    "goToMarket": "Go to Market",
+    "status": {
+      "growing": "Growing",
+      "ready": "Ready",
+      "slaughtered": "Slaughtered"
+    }
+  },
+  "market": {
+    "title": "Animal Market",
+    "buy": "Buy",
+    "price": "Price",
+    "maintenance": "Maintenance",
+    "period": "Period",
+    "months": "mo.",
+    "yield": "Yield"
+  },
+  "animal": {
+    "details": "Animal Details",
+    "progress": "Progress",
+    "purchaseDate": "Purchase Date",
+    "expectedDate": "Expected Date",
+    "payMaintenance": "Pay Maintenance",
+    "photos": "Photos",
+    "noPhotos": "No photos uploaded yet"
+  },
+  "payment": {
+    "title": "Payment",
+    "amount": "Amount",
+    "currency": "Currency",
+    "pay": "Pay",
+    "processing": "Processing payment...",
+    "success": "Payment successful!",
+    "failed": "Payment failed"
+  },
+  "profile": {
+    "title": "Profile",
+    "user": "User",
+    "language": "Language",
+    "payments": "Payment History"
+  },
+  "animals": {
+    "chicken": "Chicken",
+    "pig": "Pig",
+    "cow": "Cow"
+  }
+}

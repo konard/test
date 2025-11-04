@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String    @id @default(uuid())
+  telegramId String    @unique
+  username   String?
+  firstName  String
+  phone      String?
+  address    String?
+  lang       String    @default("ru")
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  animals    Animal[]
+  payments   Payment[]
+}
+
+model Animal {
+  id            String    @id @default(uuid())
+  type          String    // "cow", "pig", "chicken"
+  name          String?
+  userId        String
+  user          User      @relation(fields: [userId], references: [id])
+  purchaseDate  DateTime  @default(now())
+  slaughterDate DateTime?
+  status        String    @default("growing") // "growing", "ready", "slaughtered"
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  media         Media[]
+  payments      Payment[]
+}
+
+model Payment {
+  id         String   @id @default(uuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id])
+  animalId   String?
+  animal     Animal?  @relation(fields: [animalId], references: [id])
+  type       String   // "purchase", "maintenance"
+  amount     Float
+  currency   String   @default("TON")
+  status     String   @default("pending") // "pending", "success", "failed"
+  externalId String?  // ID from NOWPayments/ЮKassa
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Media {
+  id        String   @id @default(uuid())
+  animalId  String
+  animal    Animal   @relation(fields: [animalId], references: [id])
+  url       String
+  type      String   // "photo", "video"
+  createdAt DateTime @default(now())
+}
